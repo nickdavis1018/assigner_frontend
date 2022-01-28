@@ -1,11 +1,12 @@
 import React from "react"
 import {Link} from "react-router-dom"
 
-const Home = ({assignments, search, setSearch, getAssignments}) => {
+const Home = ({assignments, getAssignments}) => {
+
+    const [search, setSearch] = React.useState("")
 
     const possibleToken = JSON.parse(localStorage.getItem("token"))
-
-    React.useEffect(() => getAssignments(), [])
+    const possibleRole = JSON.parse(localStorage.getItem("manager"))
 
     return <section><h1>All Assignments</h1><input className="searchBar" placeholder="Browse..." onChange={event => setSearch(event.target.value)} /><div className="taskHeader"><h1>Task</h1><h1>Assignee</h1><h1>Manager</h1><h1>Status</h1><h1>Urgency</h1><h1>Notes</h1></div>{possibleToken !== null ? assignments.filter(foundAssignment => {
         if (search === "") {

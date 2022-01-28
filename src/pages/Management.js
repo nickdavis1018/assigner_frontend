@@ -1,11 +1,11 @@
 import React from "react"
 import {Link} from "react-router-dom"
 
-const Management = ({getAssignments, assignments, search, setSearch, URL, user, userList, history}) => {
+const Management = ({getAssignments, assignments, URL, user, userList, history}) => {
+
+    const [search, setSearch] = React.useState("")
 
     const possibleToken = localStorage.getItem("token")
-
-    React.useEffect(() => getAssignments(), [])
 
     const emptyAssignment = {
         task: "",
@@ -48,7 +48,7 @@ const Management = ({getAssignments, assignments, search, setSearch, URL, user, 
         assignment.overdue = false
         assignment.flagged = false
         const submitToken = JSON.parse(localStorage.getItem("token"))
-        const response = await fetch(URL + 'assignment/', {
+        const response = await fetch(URL + 'assignments/', {
             method: "post",
             headers: {
                 Authorization: `Bearer ${submitToken.access}`,

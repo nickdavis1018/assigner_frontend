@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -8,8 +10,13 @@
 }
 
 .taskHeader{
-display: grid;
-grid-template-columns: repeat(6, 1fr);
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.img{
+  height: 12px;
+  width: 18px;
 }
 
 .task{
@@ -19,14 +26,19 @@ grid-template-columns: repeat(6, 1fr);
 
 .dashHeader{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(7, 1fr);
     border-bottom: 1px solid black;
     border-top: 1px solid black;
+    }
+
+    .fixed{
+      position: fixed;
+      margin: 0 auto;
     }
     
   .dashData{
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(7, 1fr);
       border-bottom: 1px solid black;
       }
 
@@ -41,18 +53,137 @@ grid-template-columns: repeat(6, 1fr);
   }
 
 .header{
-  background-color: rgb(5, 5, 143);
-  padding-top: 1px;
+  background-color: #0B1A2F;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: baseline;
+  height: 80px;
 }
 
 .header2{
   display: flex;
   flex-direction: row;
+  justify-content: flex-end;
+  padding-top: 60px;
+}
+
+.header2 > a{
+  color: #059DF2;
+  font-weight: bold;
+}
+
+.footer2 > a{
+  color: #059DF2;
+  font-weight: bold;
+}
+
+.loginForm{
+  display: flex;
+  flex-direction: column;
   align-items: center;
+}
+
+.loginMain{
+    padding-top: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginMain > h2{
+  font-size: 28px;
+  color: #0B1A2F;
+  opacity: 80%
+}
+
+.loginMain > h5{
+  font-size: 16px;
+  color: #0B1A2F;
+  opacity: 80%
+}
+
+.signupMain{
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginhello{
+margin-bottom: 20px;
+font-size: 28px;
+color: #0B1A2F;
+opacity: 80%
+}
+
+.loginhello2{
+margin-top: 20px;
+font-size: 16px;
+color: #0B1A2F;
+opacity: 80%
+}
+
+.signupinfo > h5{
+  font-size: 14px;
+  color: #0B1A2F;
+}
+
+.loginForm > input{
+  margin-bottom: 20px;
+  padding: 5px;
+  width: 250px;
+  background: #FFFFFF;
+  border: 1px solid #D2D2D0;
+  box-sizing: border-box;
+  border-radius: 4px;
+  height: 32px;
+}
+
+.labelsName{
+  opacity: 30%;
+  padding-right: 168px;
+  margin-bottom: 2px;
+}
+
+.labelsEmail{
+  opacity: 30%;
+  padding-right: 146px;
+  margin-bottom: 2px;
+}
+
+.labelsRole{
+  opacity: 30%;
+  padding-right: 214px;
+  margin-bottom: 2px;
+}
+
+.loginForm > select{
+  margin-bottom: 20px;
+  padding: 5px;
+  width: 250px;
+  background: #FFFFFF;
+  border: 1px solid #D2D2D0;
+  box-sizing: border-box;
+  border-radius: 4px;
+  height: 32px;
+}
+
+.loginButton{
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background: #059DF2;
+  border-radius: 4px;
+  width: 250px;
+  padding: 10px;
+  color: white;
+}
+
+.labels{
+  opacity: 30%;
+  padding-right: 176px;
+  margin-bottom: 2px;
 }
 
 .headerLink{
@@ -60,8 +191,35 @@ grid-template-columns: repeat(6, 1fr);
   padding-left: 10px;
 }
 
-.titlePage{
+.titlePageTitle{
   padding-left: 10px;
+  color: #059DF2;
+  font-size: 64px;
+  padding-top: 4px;
+  margin: 0 auto;
+  text-decoration: underline;
+  text-shadow: 2px 2px 2px white;
+}
+
+
+.footer{
+  background-color: #0B1A2F;
+  margin-top: 1rem;
+  padding: 1rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.footer2{
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
+
+.footer2 > a{
+  color: #059DF2;
 }
 
 @media (prefers-reduced-motion: no-preference) {

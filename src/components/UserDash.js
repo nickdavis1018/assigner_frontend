@@ -2,15 +2,22 @@ import React from "react"
 import { Link } from "react-router-dom";
 import "../App.css";
 
-function Dashboard({ userList, assignments, getAssignments, logout }){
+function UserDash({ userList, assignments, getAssignments, logout }){
 
-    React.useEffect(() => getAssignments(), [])
+    const user = localStorage.getItem("username")
 
-        const userArray = userList
+    React.useEffect(() => getAssignments(), [])   
+
+        const userArray = userList        
         const assignmentArray = assignments
+        console.log(assignments)
         const testUsers = []
         const dashboardArray = []
+
         for(let i=0; i < userArray.length; i++){
+            console.log(user)
+            console.log(userArray[i].username)
+        if(user === userArray.username){
             for(let x=0;x < assignmentArray.length; x++){
                 if(userArray[i].username === assignmentArray[x].assignee && testUsers.includes(userArray[i].username) === false){
                     if(assignmentArray[x].flagged === true && assignmentArray[x].overdue === true && assignmentArray[x].completed === true){
@@ -57,19 +64,32 @@ function Dashboard({ userList, assignments, getAssignments, logout }){
                     }} 
                 }
             }}
+        else{
+            return null
+        }}
                 
         console.log(dashboardArray)
-        dashboardArray.push({username: "test", first: "test", last: "test", count: 6, overdue: 1, flagged: 1, closed: 5, active: 4, email: "joey@joey.com"})
-        dashboardArray.push({username: "testerman", first: "test", last: "test", count: 0, overdue: 1, flagged: 1, closed: 5, active: 4, email: "joey@joey.com"})
         dashboardArray.sort((a, b) => (a.count < b.count) ? 1 : -1)
     
+    let dashboardDisplay = null
 
-    return <><div className="dash">
-        <h5 className="dashTitle">Task Tracker</h5>
-        <div className="dashHeader"><h5 className="userName">Username</h5><h5>Assignments</h5><h5>Active</h5><h5>Overdue</h5><h5>Flagged</h5><h5>Closed</h5><h5>Contact</h5></div>
-        {dashboardArray.map((user, index) => <div key={index} className="dashData"><h5 className="userName">{user.first} {user.last}</h5><h5>{user.count}</h5><h5>{user.active}</h5><h5 className="userOverdue">{user.overdue}</h5><h5 className="userFlagged">{user.flagged}</h5><h5>{user.closed}</h5><a className href={"mailto: " + user.email}><img className="img" src="https://imgur.com/unI173E.png"/></a></div>)}
-    </div>
-    </> 
+    for(let i; i < dashboardArray.length; i++){
+        console.log(dashboardArray[i].username)
+        console.log(user)
+        if(dashboardArray[i].username === user){
+            dashboardDisplay = dashboardArray[i].username
+        }
+        else{
+            dashboardDisplay = null
+        }
     }
 
-export default Dashboard
+    return <div>{dashboardDisplay === null ? null : <div className="dash">
+        <h5 className="dashTitle">Task Tracker</h5>
+        <div className="dashHeader"><h5 className="userName">Username</h5><h5>Assignments</h5><h5>Active</h5><h5>Overdue</h5><h5>Flagged</h5><h5>Closed</h5></div>
+        <div className="dashData"><h5 className="userName">{dashboardDisplay.first} {dashboardDisplay.last}</h5><h5>{dashboardDisplay.count}</h5><h5>{dashboardDisplay.active}</h5><h5 className="userOverdue">{dashboardDisplay.overdue}</h5><h5 className="userFlagged">{dashboardDisplay.flagged}</h5><h5>{dashboardDisplay.closed}</h5></div>
+    </div>}
+    </div> 
+    }
+
+export default UserDash

@@ -8,20 +8,20 @@ import Management from './pages/Management';
 import Home from './pages/Home'
 import SingleAssignment from './pages/SingleAssignment'
 import Header from './components/Header'
+import Footer from './components/Footer'
 import Dashboard from './components/Dashboard'
 import SignUp from './pages/SignUp'
+import UserDash from './components/UserDash'
 
 function App(props) {
 
   const [token, setToken] = React.useState({})
 
-  const [user, setUser] = React.useState("")
+  const [user, setUser] = React.useState(localStorage.getItem("username"))
 
   const [userList, setUserList] = React.useState([])
 
   const [assignments, setAssignments] = React.useState([])
-
-  const [search, setSearch] = React.useState("")
 
   const URL = "http://localhost:8000/"
 
@@ -37,72 +37,70 @@ function App(props) {
       if(data.access){
       localStorage.setItem("token", JSON.stringify(data))
       localStorage.setItem("username", un)
-      console.log(data)
-      setToken(data)
-      console.log(localStorage.getItem("token"))
-      props.history.push("/home")}
+      window.location.href = "/assignments"
+      console.log(localStorage.getItem("token"))}
       else{
         console.log(data)
       }
     })
   }
 
-  React.useEffect(() => {
-    const possibleToken = JSON.parse(localStorage.getItem("token"))
-    const possibleUser = localStorage.getItem("username")
-    if(possibleToken !== null){
-      console.log(possibleToken)
-      setToken(possibleToken)
-      setUser(possibleUser)
-      console.log(user)
-    }
-    else{
-    setUser(null)
-    props.history.push('/login')}
-  }, [])
-
   const logout = ()=>{
     localStorage.removeItem("token")
     localStorage.removeItem("username")
     setToken({})
+    setUser(null)
   }
 
+  React.useEffect(() => {
+    const possibleToken = JSON.parse(localStorage.getItem("token"))
+    const possibleUser = localStorage.getItem("username")
+    console.log(possibleUser)
+    console.log(possibleToken)
+    setToken(possibleToken)
+    setUser(possibleUser)
+    console.log(user)
+  }, [])
+
+
   const getAssignments = async () => {
-    if(
-      JSON.parse(localStorage.getItem("token")) !== null
-    ){
     const submitToken = JSON.parse(localStorage.getItem("token"))
-    console.log(submitToken.access)
-    const response = await fetch(URL + 'assignment/', {
+    if(submitToken === null){
+      props.history.push("/login")
+    }
+    else{
+    const response = await fetch(URL + 'assignments/', {
     method: "get",
     headers: {
         Authorization: `Bearer ${submitToken.access}`
     }
 })
 const data = await response.json()
-console.log(data)
-setAssignments(data)
+if(data.code === "token_not_valid"){
+  logout()
+  props.history.push("/login")
 }
-  else{
-    return
-  }
-}
+else{
+setAssignments(data)}
+}}
+
 React.useEffect(() => getAssignments(), [])
 
 const deleteAssignment = async (assignment) => {
   const submitToken = JSON.parse(localStorage.getItem("token"))
-  const response = await fetch(URL + 'assignment/' + assignment.id + "/", {
+  const response = await fetch(URL + 'assignments/' + assignment.id + "/", {
     method: "delete",
     headers: {
       Authorization: `Bearer ${submitToken.access}`}
   });
   getAssignments();
-  props.history.push("/");
+  props.history.push("/management");
 };
+
 
 const updateAssignment = async (events, id) => {
   const submitToken = JSON.parse(localStorage.getItem("token"))
-  await fetch(URL + 'assignment/' + id  + "/", {
+  await fetch(URL + 'assignments/' + id  + "/", {
     method: "put",
     headers: {
       Authorization: `Bearer ${submitToken.access}`,
@@ -124,20 +122,34 @@ setUserList(data)
 
 React.useEffect(() => getUsers(), [])
 
-console.log(user)
+for(let i=0; i < userList.length; i++){
+  if(userList[i].username === user){
+    let roleCheck = userList[i]
+    if(roleCheck.is_staff === true){
+      localStorage.setItem("manager", true)
+    }
+    else if(roleCheck.is_staff === false){
+      localStorage.setItem("manager", false)
+    }
+  }
+}
+
+console.log(localStorage.getItem("manager"))
 
 return (
     <div className="App">
       <Header user={token} logout={logout}/>
-      <Dashboard user={token} userList={userList} getAssignments={getAssignments} assignments={assignments} logout={logout}/>
-      <Switch>
-      <Route exact path="/home" render={(rp) => <Home user={user} search={search} setSearch={setSearch} getAssignments={getAssignments} assignments={assignments} {...rp}/>}/>
-      <Route exact path="/assignments" render={(rp) => <Assignments search={search} setSearch={setSearch} user={user} getAssignments={getAssignments} setAssignments={setAssignments} assignments={assignments} {...rp}/>}/>
+      <UserDash user={user} userList={userList} getAssignments={getAssignments} assignments={assignments} logout={logout}/>
+      <Switch className="masterData">
+      <Route exact path="/" render={(rp) => <Home user={user} getAssignments={getAssignments} assignments={assignments} {...rp}/>}/>
+      <Route exact path="/assignments" render={(rp) => <Assignments user={user} getAssignments={getAssignments} setAssignments={setAssignments} assignments={assignments} {...rp}/>}/>
       <Route path="/assignments/:id" render={(rp) => <SingleAssignment user={user} userList={userList} updateAssignment={updateAssignment}deleteAssignment={deleteAssignment} assignments={assignments} {...rp}/>}/>
       <Route exact path="/login" render={(rp) => <Login logout={logout} getToken={getToken} {...rp}/>}/>
       <Route exact path="/signup" render={(rp) => <SignUp URL={URL} logout={logout} getToken={getToken} {...rp}/>}/>
-      <Route exact path="/management" render={(rp) => <Management search={search} setSearch={setSearch} user={user} userList={userList} URL={URL} assignments={assignments} getAssignments={getAssignments} {...rp}/>}/>
+      <Route exact path="/management" render={(rp) => <Management user={user} userList={userList} URL={URL} assignments={assignments} getAssignments={getAssignments} {...rp}/>}/>
+      <Route exact path="/dashboard" render={(rp) => <Dashboard user={token} userList={userList} getAssignments={getAssignments} assignments={assignments} logout={logout}/>}/>
       </Switch>
+      <Footer className="fixed" user={token} logout={logout}/>
     </div>
   );
 }

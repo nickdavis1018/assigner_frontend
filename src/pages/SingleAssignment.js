@@ -2,8 +2,6 @@ import React from "react"
 
 
 const SingleAssignment = ({match, assignments, deleteAssignment, updateAssignment, userList, history}) => {
-    
-    const possibleToken = JSON.parse(localStorage.getItem("token"))
 
     const id = parseInt(match.params.id);
     const assignment = assignments.find((assignment) => assignment.id === id);
@@ -17,7 +15,7 @@ const SingleAssignment = ({match, assignments, deleteAssignment, updateAssignmen
   const handleSubmit = (event) => {
     event.preventDefault()
     updateAssignment(editForm, assignment.id)
-    history.push("/home")
+    history.push("/")
   }
 
 const usersAll = []
@@ -63,7 +61,7 @@ Due?<select name="overdue" value={editForm.overdue.toString()} onChange={handleC
         <option value="true">Yes</option>
         <option value="false">No</option>
       </select>
-Flagged for Review?<select name="flagged" value={editForm.overdue.toString()} onChange={handleChange} required>
+Flagged for Review?<select name="flagged" value={editForm.flagged.toString()} onChange={handleChange} required>
         <option value="">Choose</option>
         <option value="true">Yes</option>
         <option value="false">No</option>
