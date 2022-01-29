@@ -1,9 +1,14 @@
 import React from "react"
 import {Link} from "react-router-dom"
+import Modal from "../components/Modal"
 
 const Management = ({getAssignments, deleteAssignment, updateAssignment, assignments, URL, user, userList, history}) => {
 
     const [search, setSearch] = React.useState("")
+
+    const [visible, setVisible] = React.useState(false)
+
+    const toggleVisibility = () => setVisible((s) => !s);
 
     const possibleToken = localStorage.getItem("token")
 
@@ -31,15 +36,16 @@ const Management = ({getAssignments, deleteAssignment, updateAssignment, assignm
         handleNewAssignment(formData);
         setFormData({
             task: "",
-            assignee: "",
-            assigner: "unassigned",
+            assignee: "unassigned",
+            assigner: "",
             notes: "",
             completed: "",
             urgency: "",
             flagged: "",
             overdue: "",
           }); 
-        history.push("/management");
+        history.push("/management")
+        setVisible(false);
       };
 
       const handleNewAssignment = async(assignment) => {
@@ -90,9 +96,10 @@ const Management = ({getAssignments, deleteAssignment, updateAssignment, assignm
           usersAll.push(userList[i].username)
       }
 
-    return <div>
-<h1>Manage Assignments</h1>
-<form onSubmit={handleSubmisson}>
+    return <div> <Modal visible={visible}>
+<h4>Create Assignment</h4>
+<div className="loginForm">
+<form className="editForm" onSubmit={handleSubmisson}>
 Task Title<input
         type="text"
         onChange={handleChange}
@@ -117,9 +124,9 @@ Notes<input
         placeholder="notes"
         required
       />
-            <input type="submit" value="Create Task"/>
-</form>
-<section className="list"><div className="labelTitleAll"><div className="labelTitle"><h1>Managed Assignments</h1><button>+</button></div><div><input className="searchBar" placeholder="Browse..." onChange={event => setSearch(event.target.value)} /></div></div><div className="dashHeader"><h1>Task</h1><h1>Status</h1><h1>Priority</h1><h1>Delivery</h1><h1>Review</h1><h1>Assignee</h1><h1>Actions</h1></div>{possibleToken !== null ? assignments.filter(foundAssignment => {
+           <br/> <input className="button3" type="submit" value="Create Task"/>
+</form><br/><button className="button3" onClick={toggleVisibility}>Go back</button></div></Modal>
+<section className="list"><div className="labelTitleAll"><div className="labelTitle"><h1>Managed Assignments</h1><button className="mobile" onClick={toggleVisibility}>+</button></div><div><input className="searchBar" placeholder="Browse..." onChange={event => setSearch(event.target.value)} /></div></div><div className="dashHeader"><h4>Task</h4><h4 className="display2">Status</h4><h4 className="display">Priority</h4><h4 className="display">Delivery</h4><h4 className="display">Review</h4><h4 className="display2">Assignee</h4><h4 className="display4">Actions</h4></div>{possibleToken !== null ? assignments.filter(foundAssignment => {
         if (search === "") {
           return foundAssignment;
         } else if (foundAssignment.task.toLowerCase().includes(search.toLowerCase())) {
@@ -130,7 +137,7 @@ Notes<input
           return foundAssignment}
           else{
             return
-          }}).map((assignment, index) => <div className="dashData" key={index}><Link  to={`/assignments/${assignment.id}`}><h1>{assignment.task}</h1></Link>{assignment.completed ? <h2>Completed</h2>: <h2>Active</h2>}{assignment.urgency ? <h2>Urgent</h2>: <h2>Standard</h2>}{assignment.overdue ? <h2>Overdue</h2>: <h2>Due</h2>}{assignment.flagged ? <h2>Flagged</h2>: <h2>Unflagged</h2>}<h2>{assignment.assignee}</h2><div>{role ? <div className="buttons"><button className="button3" onClick={(event) => flag(assignment)}>{assignment.flagged ? "Unflag" : "Flag"}</button><button className="button3" onClick={(event) => due(assignment)}>{assignment.overdue ? "Mark Due" : "Mark Overdue"}</button></div>: ""}</div></div>): <h1>Not logged in</h1>}
+          }}).map((assignment, index) => <div className="dashData" key={index}><Link  to={`/assignments/${assignment.id}`}><h4>{assignment.task}</h4></Link>{assignment.completed ? <h4 className="display2">Completed</h4>: <h4 className="display2">Active</h4>}{assignment.urgency ? <h4 className="display">Urgent</h4>: <h4 className="display">Standard</h4>}{assignment.overdue ? <h4 className="display">Overdue</h4>: <h4 className="display">Due</h4>}{assignment.flagged ? <h4 className="display">Flagged</h4>: <h4 className="display">Unflagged</h4>}<h4 className="display2">{assignment.assignee}</h4>{role ? <div className="buttons"><button className="button3" onClick={(event) => flag(assignment)}>{assignment.flagged ? "Unflag" : "Flag"}</button><button className="button3" onClick={(event) => due(assignment)}>{assignment.overdue ? "Mark Due" : "Mark Overdue"}</button></div>: ""}</div>): <h4>Not logged in</h4>}
     </section>
     </div>
 }

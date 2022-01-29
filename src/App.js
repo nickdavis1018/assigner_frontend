@@ -8,7 +8,6 @@ import Management from './pages/Management';
 import Home from './pages/Home'
 import SingleAssignment from './pages/SingleAssignment'
 import Header from './components/Header'
-import Footer from './components/Footer'
 import Dashboard from './components/Dashboard'
 import SignUp from './pages/SignUp'
 import UserDash from './components/UserDash'
@@ -23,7 +22,7 @@ function App(props) {
 
   const [assignments, setAssignments] = React.useState([])
 
-  const URL = "http://localhost:8000/"
+  const URL = "https://assigner-database.herokuapp.com/"
 
   const getToken = async (un, pw) => {
     const response = await fetch(URL + "api/token/", {
@@ -136,21 +135,22 @@ for(let i=0; i < userList.length; i++){
 
 console.log(localStorage.getItem("manager"))
 
+
 return (
     <div className="App">
       <Header user={token} logout={logout}/>
-      <UserDash user={user} userList={userList} getAssignments={getAssignments} assignments={assignments} logout={logout}/>
+      {user ? <UserDash user={user} userList={userList} getAssignments={getAssignments} assignments={assignments} logout={logout}/>: ""}
       <Switch className="masterData">
-      <Route exact path="/" render={(rp) => <Home user={user} getAssignments={getAssignments} assignments={assignments} {...rp}/>}/>
+      <Route exact path="/" render={(rp) => <Home user={user} updateAssignment={updateAssignment} getAssignments={getAssignments} assignments={assignments} {...rp}/>}/>
       <Route exact path="/assignments" render={(rp) => <Assignments user={user} getAssignments={getAssignments} updateAssignment={updateAssignment} deleteAssignment={deleteAssignment} setAssignments={setAssignments} assignments={assignments} {...rp}/>}/>
-      <Route path="/assignments/:id" render={(rp) => <SingleAssignment user={user} userList={userList} updateAssignment={updateAssignment}deleteAssignment={deleteAssignment} assignments={assignments} {...rp}/>}/>
+      <Route path="/assignments/:id" render={(rp) => <SingleAssignment user={user} role={localStorage.getItem("manager")} userList={userList} updateAssignment={updateAssignment}deleteAssignment={deleteAssignment} assignments={assignments} {...rp}/>}/>
       <Route exact path="/login" render={(rp) => <Login logout={logout} getToken={getToken} {...rp}/>}/>
       <Route exact path="/signup" render={(rp) => <SignUp URL={URL} logout={logout} getToken={getToken} {...rp}/>}/>
       <Route exact path="/management" render={(rp) => <Management user={user} userList={userList} URL={URL} updateAssignment={updateAssignment}deleteAssignment={deleteAssignment} assignments={assignments} getAssignments={getAssignments} {...rp}/>}/>
-      <Route exact path="/dashboard" render={(rp) => <Dashboard user={token} userList={userList} getAssignments={getAssignments} assignments={assignments} logout={logout}/>}/>
+      <Route exact path="/dashboard" render={(rp) => <Dashboard user={user} userList={userList} getAssignments={getAssignments} assignments={assignments} logout={logout}/>}/>
       </Switch>
-      <Footer className="fixed" user={token} logout={logout}/>
     </div>
+    
   );
 }
 

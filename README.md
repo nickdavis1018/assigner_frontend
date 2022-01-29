@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+# Welcome to Assigner!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Looking for Backend? Check out the <a href="https://github.com/nickdavis1018/assigner_backend">Backend Repo</a>.
 
-## Available Scripts
+Looking for Trello? Check out the <a href="https://trello.com/b/88Qu1vK1/on-board">On/board Trello</a>.
 
-In the project directory, you can run:
+Looking for Heroku? Check out the <a href="https://onboard-backend-dev.herokuapp.com/">On/board Database</a>.
 
-### `npm start`
+Want to check out the site? Check out <a href="https://onboard-ga.netlify.app/">On/board</a>!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Mission
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Create a front-end React application capable of ingesting and feeding data to a remote API through Heroku/PostgreSQL. The application serves two purposes: 1, to allow Assigner accounts to login, create assignments, update assignments. and assign items to Assignee accounts. Assignee accounts are able to claim existing assignments, resolve them, and Remove themselves from existing assignments. All accounts can also view their active queue status.
 
-### `npm test`
+## Technologies Used 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- HTML / CSS
+- Javascript
+- React
+- Python 
+- Django
+- SimpleJWT
+- Postgresql
+- Github
+- Heroku (back-end)
+- Netlify (front-end)
 
-### `npm run build`
+## MVP / Achieved Targets
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Allow full CRUD functionality
+- Create User Authentication / Authorization
+- Create Search Functionality
+- Utilize Multiple Models
+- Responsive Design
+- Incorporate Modal Functionality
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Original ERD
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<img src="https://imgur.com/cZyqo4kpng"/>
 
-### `npm run eject`
+## Wireframes
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Index<br/>
+<img src="https://imgur.com/d0sSgoL.png"/>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Show<br/>
+<img src="https://imgur.com/uS9zOMV.png"/>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Stretch Goals
 
-## Learn More
+- Add Date / Calendar Functionality
+- Increase security and transition away from SimpleJWT
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Site Info
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The On/board site can be logged into from the home page (required):
 
-### Code Splitting
+<img src="https://imgur.com/gqVZrRO.png"/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Users can utilize the Search bar to browse events and filter the employees by status:
 
-### Analyzing the Bundle Size
+<img src="https://imgur.com/DgxKIbU.png"/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Users can select individal employees to take unique actions on their account:
 
-### Making a Progressive Web App
+<img src="https://imgur.com/lNKVkvq.png"/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Code Snippets
 
-### Advanced Configuration
+App.js<br/>
+<img src="https://imgur.com/DbCDPHx.png"/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Assignment.js<br/>
+<img src="https://imgur.com/ocJEcUL.png"/>
 
-### Deployment
+Home.js<br/>
+<img src="https://imgur.com/w4TCe6j.png"/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Management.js<br/>
+<img src="https://imgur.com/xMHRBZx.png"/>
 
-### `npm run build` fails to minify
+Dashboard.js / UserDash.js
+<img src="https://imgur.com/mZYMiqx.png"/>
+<img src="https://imgur.com/huvTMla.png"/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+Nick Davis<br>
+Development Lead<br>
+<a href="https://github.com/nickdavis1018">Nick's Github</a>

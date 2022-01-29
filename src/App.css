@@ -29,6 +29,7 @@
     grid-template-columns: repeat(7, 1fr);
     border-bottom: 1px solid black;
     border-top: 1px solid black;
+    background-color: #059DF2;;
     }
 
     .fixed{
@@ -40,12 +41,41 @@
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       border-bottom: 1px solid black;
+      background-color: rgb(232, 230, 230);
       }
 
   .dash{
     background-color: rgb(235, 235, 235);
     padding: 1px;
   }
+
+
+  .dashHeader2{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    background-color: #059DF2;;
+    }
+
+    .dash2{
+      background-color: rgb(235, 235, 235);
+    }
+
+    .emailLink{
+      margin-top: 20px;
+    }
+
+    .border{
+      border-right: 1px solid black;
+    }
+    
+    .dashData2{
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border-bottom: 1px solid black;
+      background-color: rgb(232, 230, 230);
+      }
 
   .userName{
     text-align: left;
@@ -81,6 +111,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 20px;
 }
 
 .flagged{
@@ -234,17 +265,17 @@ opacity: 80%
   grid-template-columns: repeat(2, 0fr);
   text-align: center;
   justify-content: center;
+  padding-top: 20px
 }
 
 .titleShow{
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background-color: #ccdffa;
   margin: 0 auto;
-  padding: 20px;
+  padding-top: 40px;
   font-size: 28px;
-  color: rgb(5, 0, 63)
+  color: #0B1A2F;
 }
 
 
@@ -261,7 +292,8 @@ opacity: 80%
   text-align: center;
   padding: 5px;
   border: 1px solid black;
-  background-color: #ffffff;
+  background-color: #059DF2;
+  color: white;
   width: 150px;
 }
 
@@ -305,6 +337,7 @@ opacity: 80%
   position: fixed;
   bottom: 0;
   left: 0;
+  margin-top: 100px;
   width: 100%;
 }
 
@@ -314,20 +347,293 @@ opacity: 80%
   justify-content: right;
 }
 
+.noteEnd{
+  text-align: center;
+  align-items: center;
+  padding-bottom: 10px;
+  justify-content: center;
+  border-bottom: 1px solid black;
+}
+
+.note{
+  border: solid black 1px;
+  background-color: #059DF2;
+  padding: 10px;
+}
+
 .buttons{
   display: flex;
   flex-direction: row;
   justify-items: center;
 }
 
+.button3 > a {
+  color: white
+}
+
 .buttons > .button3 {
   width: 100%;
+  margin: 10px;
   justify-items: center;
+  background-color: #059DF2;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.button3 {
+  width: 90%;
+  justify-items: center;
+  background-color: #059DF2;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  margin: 10px;
 }
 
 .footer2 > a{
   color: #059DF2;
 }
+
+@media only screen and (max-width: 1200px) {
+  
+.dashHeader{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  background-color: #059DF2;;
+  }
+
+  .fixed{
+    position: fixed;
+    margin: 0 auto;
+  }
+  
+.dashData{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-bottom: 1px solid black;
+    background-color: rgb(232, 230, 230);
+    }
+
+  .display{
+    display: none
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  
+  .header2{
+    padding-top: 10px;
+  }
+
+  .dashHeader{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    background-color: #059DF2;;
+    }
+  
+    .fixed{
+      position: fixed;
+      margin: 0 auto;
+    }
+    
+  .dashData{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid black;
+      background-color: rgb(232, 230, 230);
+      }
+  
+    .display{
+      display: none
+    }
+
+    .header2{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      padding-top: 0px
+    }
+
+    .header{
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 20px;
+    }
+  }
+
+  @media only screen and (max-width: 700px) {
+  
+    .dashHeader{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      border-bottom: 1px solid black;
+      border-top: 1px solid black;
+      background-color: #059DF2;;
+      }
+
+      .dashHeader2{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-bottom: 1px solid black;
+        border-top: 1px solid black;
+        background-color: #059DF2;;
+        }
+    
+      .fixed{
+        position: fixed;
+        margin: 0 auto;
+      }
+      
+    .dashData{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        border-bottom: 1px solid black;
+        background-color: rgb(232, 230, 230);
+        }
+    
+      .display{
+        display: none
+      }
+      .display2{
+        display: none
+      }
+
+      .display3{
+        display: none
+      }
+  
+      .header2{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding-top: 0px
+      }
+  
+      .header{
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 20px;
+      }
+      .dashData2{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-bottom: 1px solid black;
+        background-color: rgb(232, 230, 230);
+        }
+    }
+
+    @media only screen and (max-width: 500px) {
+
+      .button3 {
+        width: 100%;
+        justify-items: center;
+        background-color: #059DF2;
+        color: white;
+        border-radius: 8px;
+        font-weight: bold;
+        margin: 10px;
+      }
+
+      .showMaster{
+        display: grid;
+        grid-template-columns: repeat(1, 0fr);
+        text-align: center;
+        justify-content: center;
+      }
+
+      .showMaster > h1{
+        width: 200px;
+        padding: 0px;
+      }
+
+      .showMaster > h2{
+        width: 200px;
+        padding: 0px;
+      }
+
+      .dashHeader{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        border-bottom: 1px solid black;
+        border-top: 1px solid black;
+        background-color: #059DF2;;
+        }
+  
+        .dashHeader2{
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          border-bottom: 1px solid black;
+          border-top: 1px solid black;
+          background-color: #059DF2;;
+          }
+      
+        .labelTitleAll{
+          text-align: center;
+          padding-left: 0px;
+        }
+
+        .labelTitle{
+          justify-content: center;
+          justify-items: center;
+        }
+
+        .fixed{
+          position: fixed;
+          margin: 0 auto;
+        }
+        
+      .dashData{
+          display: grid;
+          grid-template-columns: repeat(1, 1fr);
+          border-bottom: 1px solid black;
+          background-color: rgb(232, 230, 230);
+          }
+      
+        .display{
+          display: none
+        }
+        .display2{
+          display: none
+        }
+  
+        .display3{
+          display: none
+        }
+    
+        .header2{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding-top: 0px
+        }
+
+        .display4{
+          display: none
+        }
+    
+        .header{
+          display: flex;
+          flex-direction: column;
+          padding-bottom: 100px;
+        }
+        .dashData2{
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          border-bottom: 1px solid black;
+          background-color: rgb(232, 230, 230);
+          }
+        .userName{
+          text-align: center;
+          }
+        .emailLink{
+          margin-bottom: 40px;
+        }
+      }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
