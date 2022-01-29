@@ -37,7 +37,6 @@ function App(props) {
       localStorage.setItem("token", JSON.stringify(data))
       localStorage.setItem("username", un)
       props.history.push('/')
-      window.location.href = ('/')
       }
       else{
         return

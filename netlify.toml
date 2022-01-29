@@ -1,3 +1,4 @@
 [[redirects]]
-  from = "/*"
-  to = "/assignments"
+from = "/*"
+to = "/index.html"
+status = 200 
