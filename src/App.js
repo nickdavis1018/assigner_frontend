@@ -16,13 +16,20 @@ function App(props) {
 
   const [token, setToken] = React.useState({})
 
-  const [user, setUser] = React.useState("")
+  const [user, setUser] = React.useState(localStorage.getItem("username"))
 
   const [userList, setUserList] = React.useState([])
 
   const [assignments, setAssignments] = React.useState([])
 
   const URL = "https://assigner-database.herokuapp.com/"
+
+  React.useEffect(() => {
+    const possibleToken = JSON.parse(localStorage.getItem("token"))
+    const possibleUser = localStorage.getItem("username")
+    setToken(possibleToken)
+    setUser(possibleUser)
+  }, [])
 
   const getToken = async (un, pw) => {
     const response = await fetch(URL + "api/token/", {
@@ -37,6 +44,7 @@ function App(props) {
       localStorage.setItem("token", JSON.stringify(data))
       localStorage.setItem("username", un)
       props.history.push('/')
+      window.location.href = "/"
       }
       else{
         return
@@ -49,14 +57,10 @@ function App(props) {
     localStorage.removeItem("username")
     setToken({})
     setUser("")
+    props.history.push("/login")
   }
 
-  React.useEffect(() => {
-    const possibleToken = JSON.parse(localStorage.getItem("token"))
-    const possibleUser = localStorage.getItem("username")
-    setToken(possibleToken)
-    setUser(possibleUser)
-  }, [])
+
 
 
   const getAssignments = async () => {
@@ -131,10 +135,11 @@ for(let i=0; i < userList.length; i++){
 
 
 
+console.log(user)
 return (
     <div className="App">
       <Header user={token} logout={logout}/>
-      {user !== "" ? <UserDash user={user} userList={userList} getAssignments={getAssignments} assignments={assignments} logout={logout}/>: ""}
+      {user !== null && user !== "" && user !== undefined  ? <UserDash user={user} userList={userList} getAssignments={getAssignments} assignments={assignments} logout={logout}/>: ""}
       <Switch className="masterData">
       <Route exact path="/" render={(rp) => <Home user={user} updateAssignment={updateAssignment} getAssignments={getAssignments} assignments={assignments} {...rp}/>}/>
       <Route exact path="/assignments" render={(rp) => <Assignments user={user} getAssignments={getAssignments} updateAssignment={updateAssignment} deleteAssignment={deleteAssignment} setAssignments={setAssignments} assignments={assignments} {...rp}/>}/>
