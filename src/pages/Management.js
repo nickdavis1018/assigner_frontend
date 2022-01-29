@@ -1,15 +1,17 @@
 import React from "react"
 import {Link} from "react-router-dom"
 
-const Management = ({getAssignments, assignments, URL, user, userList, history}) => {
+const Management = ({getAssignments, deleteAssignment, updateAssignment, assignments, URL, user, userList, history}) => {
 
     const [search, setSearch] = React.useState("")
 
     const possibleToken = localStorage.getItem("token")
 
+    const role = localStorage.getItem("manager")
+
     const emptyAssignment = {
         task: "",
-        assignee: "",
+        assignee: "unassigned",
         assigner: "",
         notes: "",
         completed: "",
@@ -30,14 +32,14 @@ const Management = ({getAssignments, assignments, URL, user, userList, history})
         setFormData({
             task: "",
             assignee: "",
-            assigner: "",
+            assigner: "unassigned",
             notes: "",
             completed: "",
             urgency: "",
             flagged: "",
             overdue: "",
           }); 
-        history.push("/assignments");
+        history.push("/management");
       };
 
       const handleNewAssignment = async(assignment) => {
@@ -58,6 +60,24 @@ const Management = ({getAssignments, assignments, URL, user, userList, history})
         })
         getAssignments()
       }
+
+      const flag = (assignment) => {
+          if(assignment.flagged === false){
+          assignment.flagged = true}
+          else{
+            assignment.flagged = false
+          }
+          updateAssignment(assignment, assignment.id)
+      }
+
+      const due = (assignment) => {
+        if(assignment.overdue === false){
+        assignment.overdue = true}
+        else{
+          assignment.overdue = false
+        }
+        updateAssignment(assignment, assignment.id)
+    }
 
       function removeDuplicates(value, index, self){
         return self.indexOf(value) === index
@@ -86,7 +106,7 @@ Urgency<select name="urgency" value={formData.urgency} onChange={handleChange} r
         <option value="true">Urgent</option>
       </select>
 Assignee<select onChange={handleChange} value={formData.assignee} name="assignee">
-        <option default value="">Unassigned</option>
+        <option default value="unassigned">No Assignment</option>
         {usersAll.map((user, index) => <option key={index} value={user} >{user}</option>)}
       </select>
 Notes<input
@@ -99,7 +119,7 @@ Notes<input
       />
             <input type="submit" value="Create Task"/>
 </form>
-<section><h1>My Assignments</h1><input className="searchBar" placeholder="Browse..." onChange={event => setSearch(event.target.value)} /><div className="taskHeader"><h1>Task</h1><h1>Assignee</h1><h1>Manager</h1><h1>Status</h1><h1>Urgency</h1><h1>Notes</h1></div>{possibleToken !== null ? assignments.filter(foundAssignment => {
+<section className="list"><div className="labelTitleAll"><div className="labelTitle"><h1>Managed Assignments</h1><button>+</button></div><div><input className="searchBar" placeholder="Browse..." onChange={event => setSearch(event.target.value)} /></div></div><div className="dashHeader"><h1>Task</h1><h1>Status</h1><h1>Priority</h1><h1>Delivery</h1><h1>Review</h1><h1>Assignee</h1><h1>Actions</h1></div>{possibleToken !== null ? assignments.filter(foundAssignment => {
         if (search === "") {
           return foundAssignment;
         } else if (foundAssignment.task.toLowerCase().includes(search.toLowerCase())) {
@@ -110,7 +130,7 @@ Notes<input
           return foundAssignment}
           else{
             return
-          }}).map((assignment, index) => <Link key={index} to={`/assignments/${assignment.id}`}><div className="task"><h1>{assignment.task}</h1><h2>{assignment.assignee}</h2>{assignment.assigner ? <h2>{assignment.assigner}</h2> : <h2>Unassigned</h2>}{assignment.completed ? <h2>Closed</h2>: <h2>Active</h2>}{assignment.urgent ? <h2>Urgent</h2>: <h2>Standard</h2>}<h2>Placeholder</h2></div></Link>): <h1>Not logged in</h1>}
+          }}).map((assignment, index) => <div className="dashData" key={index}><Link  to={`/assignments/${assignment.id}`}><h1>{assignment.task}</h1></Link>{assignment.completed ? <h2>Completed</h2>: <h2>Active</h2>}{assignment.urgency ? <h2>Urgent</h2>: <h2>Standard</h2>}{assignment.overdue ? <h2>Overdue</h2>: <h2>Due</h2>}{assignment.flagged ? <h2>Flagged</h2>: <h2>Unflagged</h2>}<h2>{assignment.assignee}</h2><div>{role ? <div className="buttons"><button className="button3" onClick={(event) => flag(assignment)}>{assignment.flagged ? "Unflag" : "Flag"}</button><button className="button3" onClick={(event) => due(assignment)}>{assignment.overdue ? "Mark Due" : "Mark Overdue"}</button></div>: ""}</div></div>): <h1>Not logged in</h1>}
     </section>
     </div>
 }

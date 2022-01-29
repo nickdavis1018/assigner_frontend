@@ -83,6 +83,49 @@
   align-items: center;
 }
 
+.flagged{
+  text-decoration: none;
+}
+
+.labelTitleAll {
+  text-align: left;
+  padding-bottom: 10px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  padding-left: 20px;
+}
+
+.labelTitle {
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.editForm{
+  display: flex;
+  flex-direction: column;
+}
+
+.button3{
+  text-decoration: none;
+
+}
+
+.search{
+  display: flex;
+  padding-left: 20px;
+}
+
+.labelTitle > button {
+  height: 20px;
+  border-radius: 10px;
+  margin-top: 26px;
+  margin-left: 5px;
+  background-color:  #059DF2;
+  color: white;
+  font-weight: bold;
+}
+
 .loginMain{
     padding-top: 200px;
     display: flex;
@@ -125,6 +168,7 @@ color: #0B1A2F;
 opacity: 80%
 }
 
+
 .signupinfo > h5{
   font-size: 14px;
   color: #0B1A2F;
@@ -139,6 +183,11 @@ opacity: 80%
   box-sizing: border-box;
   border-radius: 4px;
   height: 32px;
+}
+
+
+.deleteShow{
+  width: 250px;
 }
 
 .labelsName{
@@ -171,6 +220,53 @@ opacity: 80%
 }
 
 .loginButton{
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background: #059DF2;
+  border-radius: 4px;
+  width: 250px;
+  padding: 10px;
+  color: white;
+}
+
+.showMaster{
+  display: grid;
+  grid-template-columns: repeat(2, 0fr);
+  text-align: center;
+  justify-content: center;
+}
+
+.titleShow{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #ccdffa;
+  margin: 0 auto;
+  padding: 20px;
+  font-size: 28px;
+  color: rgb(5, 0, 63)
+}
+
+
+.showMaster > h1{
+  text-align: center;
+  padding: 5px;
+  border: 1px solid black;
+  background-color:  #0B1A2F;
+  color: rgb(255, 255, 255);
+  width: 200px;
+}
+
+.showMaster > h2{
+  text-align: center;
+  padding: 5px;
+  border: 1px solid black;
+  background-color: #ffffff;
+  width: 150px;
+}
+
+
+.otherButton{
   margin-top: 10px;
   margin-bottom: 20px;
   background: #059DF2;
@@ -216,6 +312,17 @@ opacity: 80%
   display: flex;
   flex-direction: row;
   justify-content: right;
+}
+
+.buttons{
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+}
+
+.buttons > .button3 {
+  width: 100%;
+  justify-items: center;
 }
 
 .footer2 > a{

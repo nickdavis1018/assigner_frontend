@@ -142,11 +142,11 @@ return (
       <UserDash user={user} userList={userList} getAssignments={getAssignments} assignments={assignments} logout={logout}/>
       <Switch className="masterData">
       <Route exact path="/" render={(rp) => <Home user={user} getAssignments={getAssignments} assignments={assignments} {...rp}/>}/>
-      <Route exact path="/assignments" render={(rp) => <Assignments user={user} getAssignments={getAssignments} setAssignments={setAssignments} assignments={assignments} {...rp}/>}/>
+      <Route exact path="/assignments" render={(rp) => <Assignments user={user} getAssignments={getAssignments} updateAssignment={updateAssignment} deleteAssignment={deleteAssignment} setAssignments={setAssignments} assignments={assignments} {...rp}/>}/>
       <Route path="/assignments/:id" render={(rp) => <SingleAssignment user={user} userList={userList} updateAssignment={updateAssignment}deleteAssignment={deleteAssignment} assignments={assignments} {...rp}/>}/>
       <Route exact path="/login" render={(rp) => <Login logout={logout} getToken={getToken} {...rp}/>}/>
       <Route exact path="/signup" render={(rp) => <SignUp URL={URL} logout={logout} getToken={getToken} {...rp}/>}/>
-      <Route exact path="/management" render={(rp) => <Management user={user} userList={userList} URL={URL} assignments={assignments} getAssignments={getAssignments} {...rp}/>}/>
+      <Route exact path="/management" render={(rp) => <Management user={user} userList={userList} URL={URL} updateAssignment={updateAssignment}deleteAssignment={deleteAssignment} assignments={assignments} getAssignments={getAssignments} {...rp}/>}/>
       <Route exact path="/dashboard" render={(rp) => <Dashboard user={token} userList={userList} getAssignments={getAssignments} assignments={assignments} logout={logout}/>}/>
       </Switch>
       <Footer className="fixed" user={token} logout={logout}/>
