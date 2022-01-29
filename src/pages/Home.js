@@ -43,7 +43,6 @@ const Home = ({assignments, user, getAssignments, updateAssignment}) => {
           return foundAssignment
         }
       }).map((assignment, index) => <div key={index}className="dashData"><Link  to={`/assignments/${assignment.id}`}><h4>{assignment.task}</h4></Link>{assignment.completed ? <h4>Closed</h4>: <h4>Active</h4>}{assignment.urgent ? <h4>Urgent</h4>: <h4>Standard</h4>}<h4>{assignment.overdue ? <span className="flagged">Overdue </span>: "Due"}</h4><h4>{assignment.flagged ? <span className="flagged">Flagged</span> : "Unflagged"}</h4><h4>{assignment.assignee}</h4><div className="buttons">{assignment.assignee !== "unassigned" ? assignment.assignee === user ?<button className="button3" onClick={(event) => cancel(assignment)}>Drop</button> : <Link to={`/assignments/${assignment.id}`}><button className="button3">View</button></Link>: <button className="button3" onClick={(event) => claim(assignment, user)}>Claim</button>}</div></div>)}
-    {assignments ? <><h4 className="advice"><br/>Can't find the Assignment you are looking for?<br/><br/>Check back again later, or, if you are a manager, try<Link className="headerLink" to="/management">creating</Link>some yourself!</h4></> : ""}
     </section>
 }
 

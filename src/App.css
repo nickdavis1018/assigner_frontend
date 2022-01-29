@@ -368,6 +368,7 @@ opacity: 80%
 .note{
   border: solid black 1px;
   background-color: #059DF2;
+  color: white;
   padding: 10px;
 }
 

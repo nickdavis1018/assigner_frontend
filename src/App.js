@@ -16,7 +16,7 @@ function App(props) {
 
   const [token, setToken] = React.useState({})
 
-  const [user, setUser] = React.useState(localStorage.getItem("username"))
+  const [user, setUser] = React.useState("")
 
   const [userList, setUserList] = React.useState([])
 
@@ -37,6 +37,7 @@ function App(props) {
       localStorage.setItem("token", JSON.stringify(data))
       localStorage.setItem("username", un)
       props.history.push('/')
+      window.location.href = ('/')
       }
       else{
         return
@@ -48,7 +49,7 @@ function App(props) {
     localStorage.removeItem("token")
     localStorage.removeItem("username")
     setToken({})
-    setUser(null)
+    setUser("")
   }
 
   React.useEffect(() => {
@@ -130,10 +131,11 @@ for(let i=0; i < userList.length; i++){
 }
 
 
+
 return (
     <div className="App">
       <Header user={token} logout={logout}/>
-      {user ? <UserDash user={user} userList={userList} getAssignments={getAssignments} assignments={assignments} logout={logout}/>: ""}
+      {user !== "" ? <UserDash user={user} userList={userList} getAssignments={getAssignments} assignments={assignments} logout={logout}/>: ""}
       <Switch className="masterData">
       <Route exact path="/" render={(rp) => <Home user={user} updateAssignment={updateAssignment} getAssignments={getAssignments} assignments={assignments} {...rp}/>}/>
       <Route exact path="/assignments" render={(rp) => <Assignments user={user} getAssignments={getAssignments} updateAssignment={updateAssignment} deleteAssignment={deleteAssignment} setAssignments={setAssignments} assignments={assignments} {...rp}/>}/>
