@@ -68,7 +68,7 @@ Flag?
         <option value="false">No</option>
       </select>
 Notes?
-<input
+<textarea
       type="text"
       value={editForm.notes}
       name="notes"

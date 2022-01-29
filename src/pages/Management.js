@@ -115,7 +115,7 @@ Assignee<select onChange={handleChange} value={formData.assignee} name="assignee
         <option default value="unassigned">No Assignment</option>
         {usersAll.map((user, index) => <option key={index} value={user} >{user}</option>)}
       </select>
-Notes<input
+Notes<textarea
         type="text"
         onChange={handleChange}
         value={formData.notes}
