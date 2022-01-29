@@ -7,7 +7,6 @@ function UserDash({ userList, user, assignments, logout }){
         const assignmentArray = assignments
         const testUsers = []
         const dashUser = {count: 0, overdue: 0, flagged: 0, closed: 0, active: 0}
-        console.log(assignmentArray)
 
             for(let x=0;x < assignmentArray.length; x++){
                 if(user === assignmentArray[x].assignee){

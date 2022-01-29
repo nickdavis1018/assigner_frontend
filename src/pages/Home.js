@@ -21,8 +21,6 @@ const Home = ({assignments, user, getAssignments, updateAssignment}) => {
     }
 
     const claim = (assignment, user) => {
-        console.log(assignment)
-        console.log(user)
         assignment.assignee = user
         updateAssignment(assignment, assignment.id)
     }

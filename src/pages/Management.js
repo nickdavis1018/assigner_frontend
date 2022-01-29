@@ -49,7 +49,6 @@ const Management = ({getAssignments, deleteAssignment, updateAssignment, assignm
       };
 
       const handleNewAssignment = async(assignment) => {
-        console.log(user)
         assignment.assigner = user
         assignment.completed = false
         assignment.urgency = false

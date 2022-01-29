@@ -10,7 +10,6 @@ const Login = (props) => {
         const un = username.current.value
         const pw = password.current.value
         props.getToken(un, pw)
-        console.log(un, pw)
         username.current.value = ""
         password.current.value = ""
     }

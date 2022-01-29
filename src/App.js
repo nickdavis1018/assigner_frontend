@@ -36,10 +36,10 @@ function App(props) {
       if(data.access){
       localStorage.setItem("token", JSON.stringify(data))
       localStorage.setItem("username", un)
-      window.location.href = "/assignments"
-      console.log(localStorage.getItem("token"))}
+      props.history.push('/')
+      }
       else{
-        console.log(data)
+        return
       }
     })
   }
@@ -54,11 +54,8 @@ function App(props) {
   React.useEffect(() => {
     const possibleToken = JSON.parse(localStorage.getItem("token"))
     const possibleUser = localStorage.getItem("username")
-    console.log(possibleUser)
-    console.log(possibleToken)
     setToken(possibleToken)
     setUser(possibleUser)
-    console.log(user)
   }, [])
 
 
@@ -115,7 +112,6 @@ const getUsers = async () => {
   method: "get",
 })
 const data = await response.json()
-console.log(data)
 setUserList(data)
 }
 
@@ -132,8 +128,6 @@ for(let i=0; i < userList.length; i++){
     }
   }
 }
-
-console.log(localStorage.getItem("manager"))
 
 
 return (

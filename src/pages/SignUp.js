@@ -4,9 +4,6 @@ import { Link } from "react-router-dom";
 const SignUp = (props) => {
 
     const possibleToken = JSON.parse(localStorage.getItem("token"))
-
-    console.log(possibleToken)
-
     const username = React.useRef(null)
     const password = React.useRef(null)
     const email = React.useRef(null)

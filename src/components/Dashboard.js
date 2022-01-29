@@ -9,9 +9,7 @@ function Dashboard({ userList, user, assignments, getAssignments, logout }){
     React.useEffect(() => getAssignments(), [])
 
         const userArray = userList
-        console.log(userArray)
         const assignmentArray = assignments
-        console.log(assignments)
         const testUsers = []
         const dashboardArray = []
         for(let i=0; i < userArray.length; i++){
@@ -62,8 +60,7 @@ function Dashboard({ userList, user, assignments, getAssignments, logout }){
                     }} 
                 }
         }}}
-                
-        console.log(dashboardArray)
+            
         dashboardArray.sort((a, b) => (a.count < b.count) ? 1 : -1)
     
 
