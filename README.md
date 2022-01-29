@@ -36,7 +36,7 @@ Create a front-end React application capable of ingesting and feeding data to a 
 
 ## Original ERD
 
-<img src="https://imgur.com/cZyqo4kpng.png"/>
+<img src="https://imgur.com/ytQhUaV.png/"/>
 
 ## Wireframes
 
@@ -80,8 +80,8 @@ Home.js<br/>
 Management.js<br/>
 <img src="https://imgur.com/xMHRBZx.png"/>
 
-Dashboard.js / UserDash.js
-<img src="https://imgur.com/mZYMiqx.png"/>
+Dashboard.js / UserDash.js<br/>
+<img height="350px" width="" src="https://imgur.com/mZYMiqx.png"/>
 <img src="https://imgur.com/huvTMla.png"/>
 
 
@@ -89,6 +89,7 @@ Nick Davis<br>
 Development Lead<br>
 <a href="https://github.com/nickdavis1018">Nick's Github</a>
 
+</body>
 <style>
     img{
         width: 350px;
