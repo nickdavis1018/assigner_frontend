@@ -10,7 +10,7 @@ const possibleAdmin = JSON.parse(localStorage.getItem("manager"))
 const logInCheck = () => {
 return <div className ="header3">
 {possibleAdmin === true ? <div className ="header2"><Link className="headerLink" to="/">Home</Link>
-<Link className="headerLink" to="/assignments">Assignments</Link>
+<Link className="headerLink" to="/assignments">My Assignments</Link>
 <Link className="headerLink" to="/management">Manage</Link>
 <Link className="headerLink" to="/dashboard">Dashboard</Link>
 <Link className="headerLink" to="/login"><div onClick={logout}>Signout</div></Link></div> : <div className ="header2"><Link className="headerLink" to="/">Home</Link>

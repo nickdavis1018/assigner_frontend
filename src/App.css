@@ -19,6 +19,9 @@
   width: 18px;
 }
 
+.advice{
+  padding-top: 60px;
+}
 .task{
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -30,6 +33,7 @@
     border-bottom: 1px solid black;
     border-top: 1px solid black;
     background-color: #059DF2;;
+    color: white;
     }
 
     .fixed{
@@ -55,7 +59,7 @@
     grid-template-columns: repeat(5, 1fr);
     border-bottom: 1px solid black;
     border-top: 1px solid black;
-    background-color: #059DF2;;
+    background-color: #059DF2;
     }
 
     .dash2{
@@ -64,6 +68,12 @@
 
     .emailLink{
       margin-top: 20px;
+    }
+
+
+    .mobileButton{
+      color: white;
+      background-color: #059DF2;;
     }
 
     .border{

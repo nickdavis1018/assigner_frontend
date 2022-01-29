@@ -2,15 +2,15 @@
 
 Looking for Backend? Check out the <a href="https://github.com/nickdavis1018/assigner_backend">Backend Repo</a>.
 
-Looking for Trello? Check out the <a href="https://trello.com/b/88Qu1vK1/on-board">On/board Trello</a>.
+Looking for Trello? Check out the <a href="https://trello.com/b/HFioMszG/assigner/">Assigner Trello</a>.
 
-Looking for Heroku? Check out the <a href="https://onboard-backend-dev.herokuapp.com/">On/board Database</a>.
+Looking for Heroku? Check out the <a href="https://dashboard.heroku.com/apps/assigner-database/">Assigner Database</a>.
 
-Want to check out the site? Check out <a href="https://onboard-ga.netlify.app/">On/board</a>!
+Want to check out the site? Check out <a href="https://assigner.netlify.app/">Assigner</a>!
 
 ## Mission
 
-Create a front-end React application capable of ingesting and feeding data to a remote API through Heroku/PostgreSQL. The application serves two purposes: 1, to allow Assigner accounts to login, create assignments, update assignments. and assign items to Assignee accounts. Assignee accounts are able to claim existing assignments, resolve them, and Remove themselves from existing assignments. All accounts can also view their active queue status.
+Create a front-end React application capable of ingesting and feeding data to a remote API through Heroku/PostgreSQL. The application serves two purposes: 1, to allow Assigner accounts to login, create assignments, update assignments. and assign items to Assignee accounts. Assignee accounts are able to claim existing assignments, resolve them, and Remove themselves from existing assignments. All accounts can also view their active queue status. The primary goal of this app-build was to self-teach myself Python / Django.
 
 ## Technologies Used 
 
@@ -36,16 +36,12 @@ Create a front-end React application capable of ingesting and feeding data to a 
 
 ## Original ERD
 
-<img src="https://imgur.com/cZyqo4kpng"/>
+<img src="https://imgur.com/cZyqo4kpng.png"/>
 
 ## Wireframes
 
-Index<br/>
-<img src="https://imgur.com/d0sSgoL.png"/>
-
-Show<br/>
-<img src="https://imgur.com/uS9zOMV.png"/>
-
+Original Dashboard View<br/>
+<img src="https://imgur.com/aD5Mdyy.png"/>
 
 ## Stretch Goals
 
@@ -54,17 +50,21 @@ Show<br/>
 
 ## Site Info
 
-The On/board site can be logged into from the home page (required):
+The Assigner site can be logged into from the home page (required):
 
-<img src="https://imgur.com/gqVZrRO.png"/>
+<img src="https://imgur.com/9UJS8FU.png"/>
 
-Users can utilize the Search bar to browse events and filter the employees by status:
+Users can utilize the Search bar to browse events and filter assignments by active status and assignment:
 
-<img src="https://imgur.com/DgxKIbU.png"/>
+<img src="https://imgur.com/Z0UweME.png"/>
 
-Users can select individal employees to take unique actions on their account:
+Managers have access to a Management Dashboard to view user performance:
 
-<img src="https://imgur.com/lNKVkvq.png"/>
+<img src="https://imgur.com/YTYxyQo.png"/>
+
+Managers can access Manage sections and Create + Edit files from there:
+
+<img src="https://imgur.com/eAVsaaT.png"/>
 
 ## Code Snippets
 
@@ -88,3 +88,11 @@ Dashboard.js / UserDash.js
 Nick Davis<br>
 Development Lead<br>
 <a href="https://github.com/nickdavis1018">Nick's Github</a>
+
+<style>
+    img{
+        width: 350px;
+        height: 250px;
+        text-align: center;
+    }
+</style>

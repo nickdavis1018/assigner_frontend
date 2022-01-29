@@ -138,7 +138,8 @@ Notes<input
           else{
             return
           }}).map((assignment, index) => <div className="dashData" key={index}><Link  to={`/assignments/${assignment.id}`}><h4>{assignment.task}</h4></Link>{assignment.completed ? <h4 className="display2">Completed</h4>: <h4 className="display2">Active</h4>}{assignment.urgency ? <h4 className="display">Urgent</h4>: <h4 className="display">Standard</h4>}{assignment.overdue ? <h4 className="display">Overdue</h4>: <h4 className="display">Due</h4>}{assignment.flagged ? <h4 className="display">Flagged</h4>: <h4 className="display">Unflagged</h4>}<h4 className="display2">{assignment.assignee}</h4>{role ? <div className="buttons"><button className="button3" onClick={(event) => flag(assignment)}>{assignment.flagged ? "Unflag" : "Flag"}</button><button className="button3" onClick={(event) => due(assignment)}>{assignment.overdue ? "Mark Due" : "Mark Overdue"}</button></div>: ""}</div>): <h4>Not logged in</h4>}
-    </section>
+   {assignments ? <><h4 className="advice"><br/>Looking to manage more assignments?<br/><br/>Try creating some yourself!</h4> <button className="mobileButton" onClick={toggleVisibility}>Create New Assignment</button></>: ""}
+   </section>
     </div>
 }
 
