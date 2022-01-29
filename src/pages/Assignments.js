@@ -60,7 +60,7 @@ const Assignments = ({assignments, updateAssignment, getAssignments, user}) => {
                   else{
                     return
                   }}).map((assignment, index) => <div key={index} className="dashData"><Link  to={`/assignments/${assignment.id}`}><h4>{assignment.task}</h4></Link>{assignment.completed ? <h4 className="display2">Completed</h4>: <h4 className="display2">Active</h4>}{assignment.urgent ? <h4 className="display">Urgent</h4>: <h4 className="display">Standard</h4>}<h4 className="display">{assignment.overdue ? <span className="flagged">"Overdue" </span>: "Due"}</h4><h4 className="display">{assignment.flagged ? <span className="flagged">Flagged</span> : "Unflagged"}</h4><h4 className="display2">{assignment.assigner}</h4><div className="buttons"><button className="button3" onClick={(event) => cancel(assignment)}>Drop</button><button className="button3" onClick={(event) => complete(assignment)}>{assignment.completed ? "Reopen" : "Resolve"}</button></div></div>)}
-    {assignments ? <><h4 className="advice"><br/>Looking to work on more assignments?<br/><br/>Try<Link className="headerLink" to="/">searching</Link>for more assignments to claim.</h4> </>: ""}
+    {assignments ? <><h4 className="advice"><br/>Looking to work on more assignments?<br/><br/>Try searching for more assignments to claim below!</h4> <Link className="headerLink" to="/"><button className="mobileButton">Find Assignments</button></Link></>: ""}
     </section></>
 }
 

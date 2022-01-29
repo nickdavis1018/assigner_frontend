@@ -74,7 +74,10 @@
 
     .mobileButton{
       color: white;
-      background-color: #059DF2;;
+      background-color: #059DF2;
+      border-radius: 8px;
+      font-weight: bold;
+  
     }
 
     .border{
